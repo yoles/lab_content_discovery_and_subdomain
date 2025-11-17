@@ -1,0 +1,19 @@
+/* TEAM */
+Developer: John Developer
+Contact: john.dev@techcorp.local
+Location: Montreal, Canada
+
+Security Team: Security Operations
+Contact: security@techcorp.local
+
+/* SITE */
+Last update: 2024-01-15
+Language: English / Français
+Standards: HTML5, CSS3, JavaScript ES6
+Components: Flask, Bootstrap 5, SQLite
+Software: Python 3.11, Nginx
+
+/* THANKS */
+Technology stack powered by Flask
+Frontend framework: Bootstrap
+Icons: FontAwesome

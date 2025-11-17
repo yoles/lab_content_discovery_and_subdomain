@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /backup/
+Disallow: /secret/
+Disallow: /.git/
+Crawl-delay: 10
+
+# Development note: Remember to update before production
+# Internal endpoints should not be indexed
+# FLAG{robots_txt_exposed_7a3f}

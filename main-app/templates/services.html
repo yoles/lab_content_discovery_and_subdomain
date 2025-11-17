@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% block title %}TechCorp - Services{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="bg-primary text-white py-5">
+    <div class="container">
+        <h1 class="display-4">Our Services</h1>
+        <p class="lead">Comprehensive cybersecurity solutions for your business</p>
+    </div>
+</section>
+
+<!-- Services Detailed -->
+<section class="py-5">
+    <div class="container">
+        {% for service in services %}
+        <div class="row mb-5 {% if loop.index is even %}flex-row-reverse{% endif %}">
+            <div class="col-lg-6">
+                <div class="p-4 bg-light rounded">
+                    <i class="fas fa-{{ loop.index0 % 3 == 0 and 'lock' or loop.index0 % 3 == 1 and 'user-shield' or 'chart-line' }} fa-5x text-primary mb-3"></i>
+                </div>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center">
+                <div>
+                    <h2>{{ service.name }}</h2>
+                    <p class="lead">{{ service.description }}</p>
+                    <ul class="list-unstyled">
+                        {% if 'Penetration' in service.name %}
+                        <li><i class="fas fa-check text-success"></i> Web Application Testing</li>
+                        <li><i class="fas fa-check text-success"></i> Network Infrastructure Assessment</li>
+                        <li><i class="fas fa-check text-success"></i> Social Engineering Tests</li>
+                        <li><i class="fas fa-check text-success"></i> Wireless Security Audits</li>
+                        <li><i class="fas fa-check text-success"></i> Detailed Reporting & Remediation</li>
+                        {% elif 'Consulting' in service.name %}
+                        <li><i class="fas fa-check text-success"></i> Security Architecture Review</li>
+                        <li><i class="fas fa-check text-success"></i> Compliance Audits (ISO 27001, SOC 2)</li>
+                        <li><i class="fas fa-check text-success"></i> Security Policy Development</li>
+                        <li><i class="fas fa-check text-success"></i> Risk Assessment</li>
+                        <li><i class="fas fa-check text-success"></i> Training & Awareness Programs</li>
+                        {% else %}
+                        <li><i class="fas fa-check text-success"></i> 24/7 Emergency Response</li>
+                        <li><i class="fas fa-check text-success"></i> Forensic Investigation</li>
+                        <li><i class="fas fa-check text-success"></i> Malware Analysis</li>
+                        <li><i class="fas fa-check text-success"></i> Data Breach Management</li>
+                        <li><i class="fas fa-check text-success"></i> Post-Incident Recovery</li>
+                        {% endif %}
+                    </ul>
+                    <a href="/contact" class="btn btn-primary">Request a Quote</a>
+                </div>
+            </div>
+        </div>
+        {% if not loop.last %}
+        <hr>
+        {% endif %}
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Pricing Section -->
+<section class="bg-light py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Service Packages</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h4>Starter</h4>
+                    </div>
+                    <div class="card-body text-center">
+                        <h3 class="mb-4">$2,500<small class="text-muted">/assessment</small></h3>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check text-success"></i> Basic Vulnerability Scan</li>
+                            <li class="mb-2"><i class="fas fa-check text-success"></i> Security Report</li>
+                            <li class="mb-2"><i class="fas fa-check text-success"></i> Email Support</li>
+                            <li class="mb-2"><i class="fas fa-times text-muted"></i> Penetration Testing</li>
+                            <li class="mb-2"><i class="fas fa-times text-muted"></i> 24/7 Support</li>
+                        </ul>
+                        <a href="/contact" class="btn btn-outline-primary">Get Started</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow border-primary">
+                    <div class="card-header bg-success text-white text-center">
+                        <h4>Professional <span class="badge bg-warning">Popular</span></h4>
+                    </div>
+                    <div class="card-body text-center">
+                        <h3 class="mb-4">$7,500<small class="text-muted">/month</small></h3>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check text-success"></i> Full Penetration Testing</li>
+                            <li class="mb-2"><i class="fas fa-check text-success"></i> Detailed Reports</li>
+                            <li class="mb-2"><i class="fas fa-check text-success"></i> Remediation Support</li>
+                            <li class="mb-2"><i class="fas fa-check text-success"></i> Monthly Assessments</li>
+                            <li class="mb-2"><i class="fas fa-times text-muted"></i> 24/7 Support</li>
+                        </ul>
+                        <a href="/contact" class="btn btn-success">Get Started</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-dark text-white text-center">
+                        <h4>Enterprise</h4>
+                    </div>
+                    <div class="card-body text-center">
+                        <h3 class="mb-4">Custom<small class="text-muted"> Pricing</small></h3>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check text-success"></i> Everything in Professional</li>
+                            <li class="mb-2"><i class="fas fa-check text-success"></i> 24/7 Emergency Response</li>
+                            <li class="mb-2"><i class="fas fa-check text-success"></i> Dedicated Security Team</li>
+                            <li class="mb-2"><i class="fas fa-check text-success"></i> Custom SLA</li>
+                            <li class="mb-2"><i class="fas fa-check text-success"></i> Compliance Support</li>
+                        </ul>
+                        <a href="/contact" class="btn btn-outline-dark">Contact Sales</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Internal notes -->
+<!--
+    Service pricing stored in database
+    Admin access required for price updates
+    Pricing API endpoint: /api/v2/admin/pricing (restricted)
+
+    Database schema:
+    - services table with name, description, price fields
+    - Access via dev.techcorp.local for testing
+-->
+{% endblock %}
