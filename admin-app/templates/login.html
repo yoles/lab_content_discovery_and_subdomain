@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Portal - Login{% endblock %}
+
+{% block extra_styles %}
+<style>
+    body {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .login-card {
+        max-width: 500px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card login-card">
+                <div class="card-header bg-dark text-white text-center py-4">
+                    <h2 class="mb-0">
+                        <i class="fas fa-shield-alt"></i> TechCorp Admin Portal
+                    </h2>
+                    <p class="mb-0 mt-2">
+                        <span class="badge bg-danger">RESTRICTED ACCESS</span>
+                    </p>
+                </div>
+
+                <div class="card-body p-5">
+                    <div class="alert alert-warning text-center">
+                        <i class="fas fa-lock fa-3x mb-3"></i>
+                        <h4>Authentication Required</h4>
+                        <p class="mb-0">This portal requires valid administrator credentials.</p>
+                    </div>
+
+                    <h5 class="mt-4 mb-3">Access Methods:</h5>
+
+                    <div class="list-group mb-4">
+                        <div class="list-group-item">
+                            <h6 class="mb-2">
+                                <i class="fas fa-key text-primary"></i> HTTP Basic Authentication
+                            </h6>
+                            <p class="mb-2 small">
+                                Click the link below to access the dashboard. Your browser will prompt for credentials.
+                            </p>
+                            <a href="/dashboard" class="btn btn-primary btn-sm">
+                                <i class="fas fa-sign-in-alt"></i> Access Dashboard
+                            </a>
+                        </div>
+
+                        <div class="list-group-item">
+                            <h6 class="mb-2">
+                                <i class="fas fa-code text-success"></i> API Access
+                            </h6>
+                            <p class="mb-2 small">
+                                Use HTTP Basic Auth with API endpoints:
+                            </p>
+                            <code class="d-block bg-dark text-white p-2 rounded small">
+                                curl -u username:password http://admin.techcorp.local:8083/api/admin/status
+                            </code>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-info">
+                        <h6 class="alert-heading">
+                            <i class="fas fa-info-circle"></i> Pentester Notes
+                        </h6>
+                        <ul class="mb-0 small">
+                            <li>This portal uses HTTP Basic Authentication</li>
+                            <li>Try common admin usernames: <code>admin</code>, <code>administrator</code>, <code>techcorp</code></li>
+                            <li>Weak passwords are often used: <code>admin123</code>, <code>password</code>, company names</li>
+                            <li>Tools: Hydra, Medusa, or manual testing</li>
+                            <li>No rate limiting or account lockout detected</li>
+                        </ul>
+                    </div>
+
+                    <div class="alert alert-success">
+                        <h6 class="alert-heading">
+                            <i class="fas fa-trophy"></i> Final Flag
+                        </h6>
+                        <p class="mb-0 small">
+                            This is the last flag (FLAG 7) in the TechCorp CTF challenge.
+                            Successfully authenticate to capture it!
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card-footer text-muted text-center">
+                    <small>
+                        TechCorp Admin Portal v2.1.4 |
+                        <i class="fas fa-lock"></i> Secure Access Required
+                    </small>
+                </div>
+            </div>
+
+            <!-- Hint Card -->
+            <div class="card mt-3">
+                <div class="card-body">
+                    <h6><i class="fas fa-lightbulb text-warning"></i> Hints for Testing:</h6>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong>Common Usernames:</strong>
+                            <ul class="small">
+                                <li>admin</li>
+                                <li>administrator</li>
+                                <li>techcorp</li>
+                                <li>root</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>Common Passwords:</strong>
+                            <ul class="small">
+                                <li>admin123</li>
+                                <li>password</li>
+                                <li>techcorp2024</li>
+                                <li>root123</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

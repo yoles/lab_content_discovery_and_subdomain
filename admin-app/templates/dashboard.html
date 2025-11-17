@@ -1,0 +1,232 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark admin-nav">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/dashboard">
+            <i class="fas fa-shield-alt"></i> TechCorp Admin
+        </a>
+        <div class="navbar-text text-white">
+            <i class="fas fa-user"></i> Logged in as: <strong>{{ username }}</strong>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container mt-5">
+    <!-- Success Alert with FLAG -->
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <h3 class="alert-heading">
+            <i class="fas fa-trophy"></i> Congratulations! Final Flag Captured!
+        </h3>
+        <hr>
+        <h2 class="text-center my-4">
+            <span class="badge bg-warning text-dark p-3" style="font-size: 1.5rem;">
+                🚩 {{ flag }}
+            </span>
+        </h2>
+        <p class="mb-0">
+            <strong>Well done!</strong> You've successfully found and accessed the admin portal by exploiting weak authentication.
+            This completes all 7 flags in the TechCorp Content Discovery challenge!
+        </p>
+    </div>
+
+    <div class="row">
+        <!-- System Status -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <i class="fas fa-server"></i> System Status
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-check text-success"></i> Web Server: Online</li>
+                        <li><i class="fas fa-check text-success"></i> Database: Connected</li>
+                        <li><i class="fas fa-check text-success"></i> API: Operational</li>
+                        <li><i class="fas fa-exclamation-triangle text-danger"></i> Security: <strong>WEAK</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- User Info -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <i class="fas fa-user-shield"></i> User Information
+                </div>
+                <div class="card-body">
+                    <p><strong>Username:</strong> {{ username }}</p>
+                    <p><strong>Role:</strong> Administrator</p>
+                    <p><strong>Permissions:</strong> Full Access</p>
+                    <p><strong>Last Login:</strong> Just now</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <i class="fas fa-chart-bar"></i> Statistics
+                </div>
+                <div class="card-body">
+                    <p><strong>Total Users:</strong> 1,247</p>
+                    <p><strong>Active Sessions:</strong> 42</p>
+                    <p><strong>API Calls (24h):</strong> 15,384</p>
+                    <p><strong>Flags Found:</strong> 7/7 🎉</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- All Flags Summary -->
+    <div class="card mb-4">
+        <div class="card-header bg-dark text-white">
+            <h5 class="mb-0"><i class="fas fa-flag-checkered"></i> All Flags Summary</h5>
+        </div>
+        <div class="card-body">
+            <h6>Congratulations on finding all 7 flags!</h6>
+            <div class="row">
+                <div class="col-md-6">
+                    <ol>
+                        <li><code>FLAG{robots_txt_exposed_7a3f}</code> - robots.txt</li>
+                        <li><code>FLAG{backup_files_found_9b2e}</code> - Backup file</li>
+                        <li><code>FLAG{git_folder_leaked_4c8d}</code> - .git/config</li>
+                        <li><code>FLAG{api_v2_discovered_1e9f}</code> - Undocumented API</li>
+                    </ol>
+                </div>
+                <div class="col-md-6">
+                    <ol start="5">
+                        <li><code>FLAG{dev_subdomain_pwned_5f2a}</code> - Dev subdomain</li>
+                        <li><code>FLAG{staging_env_exposed_8g3b}</code> - Staging/phpinfo</li>
+                        <li><code>FLAG{admin_portal_found_3h4c}</code> - Admin portal (here!)</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Security Issues Found -->
+    <div class="card mb-4 border-danger">
+        <div class="card-header bg-danger text-white">
+            <h5 class="mb-0"><i class="fas fa-exclamation-triangle"></i> Security Vulnerabilities Discovered</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h6>Main Application:</h6>
+                    <ul>
+                        <li>Exposed robots.txt reveals sensitive paths</li>
+                        <li>Accessible backup files with database dumps</li>
+                        <li>Exposed .git directory with credentials</li>
+                        <li>Undocumented API endpoints accessible</li>
+                        <li>HTML comments revealing infrastructure</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h6>Subdomains:</h6>
+                    <ul>
+                        <li>Development environment publicly accessible</li>
+                        <li>Debug mode enabled on dev subdomain</li>
+                        <li>Staging environment with phpinfo() exposed</li>
+                        <li>Database credentials in phpinfo output</li>
+                        <li>Admin portal with weak authentication</li>
+                        <li>No rate limiting on admin login</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Remediation -->
+    <div class="card mb-4 border-success">
+        <div class="card-header bg-success text-white">
+            <h5 class="mb-0"><i class="fas fa-shield-alt"></i> Remediation Recommendations</h5>
+        </div>
+        <div class="card-body">
+            <ol>
+                <li><strong>Access Control:</strong> Implement VPN for dev/staging environments</li>
+                <li><strong>Authentication:</strong> Use strong passwords, 2FA, and modern auth (OAuth/SAML)</li>
+                <li><strong>File Security:</strong> Remove .git, backup files, and phpinfo from production</li>
+                <li><strong>Configuration:</strong> Disable debug mode in production</li>
+                <li><strong>API Security:</strong> Document all endpoints, implement authentication</li>
+                <li><strong>Monitoring:</strong> Set up alerts for bruteforce attempts</li>
+                <li><strong>Headers:</strong> Minimize information disclosure in HTTP headers</li>
+                <li><strong>Rate Limiting:</strong> Implement rate limiting on authentication endpoints</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Admin Actions -->
+    <div class="card mb-4">
+        <div class="card-header bg-warning">
+            <h5 class="mb-0"><i class="fas fa-tools"></i> Admin Actions</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3 mb-2">
+                    <a href="/api/admin/status" class="btn btn-primary w-100">
+                        <i class="fas fa-info-circle"></i> View Status (JSON)
+                    </a>
+                </div>
+                <div class="col-md-3 mb-2">
+                    <a href="/api/admin/users" class="btn btn-info w-100">
+                        <i class="fas fa-users"></i> List Users
+                    </a>
+                </div>
+                <div class="col-md-3 mb-2">
+                    <a href="/api/admin/config" class="btn btn-secondary w-100">
+                        <i class="fas fa-cog"></i> View Config
+                    </a>
+                </div>
+                <div class="col-md-3 mb-2">
+                    <button class="btn btn-danger w-100" disabled>
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Users (Weak Passwords Exposed) -->
+    <div class="card mb-4 border-warning">
+        <div class="card-header bg-warning">
+            <h5 class="mb-0"><i class="fas fa-exclamation-circle"></i> Admin Users (Weak Passwords!)</h5>
+        </div>
+        <div class="card-body">
+            <p class="text-danger"><strong>Security Issue:</strong> The following admin accounts have weak passwords:</p>
+            <table class="table table-sm table-striped">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>Risk Level</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user, password in admin_users.items() %}
+                    <tr>
+                        <td><code>{{ user }}</code></td>
+                        <td><code>{{ password }}</code></td>
+                        <td><span class="badge bg-danger">CRITICAL</span></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-3 mt-5">
+    <p class="mb-0">
+        TechCorp Admin Portal v2.1.4 |
+        Logged in as: {{ username }} |
+        Session: Active
+    </p>
+</footer>
+{% endblock %}

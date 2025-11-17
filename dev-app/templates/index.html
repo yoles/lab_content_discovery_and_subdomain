@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechCorp - Development Environment</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background: #1e1e1e;
+            color: #00ff00;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+        }
+        .flag {
+            background: #ffcc00;
+            color: #000;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
+        }
+        .debug-info {
+            border: 2px solid #00ff00;
+            padding: 20px;
+            margin: 20px 0;
+            background: #2a2a2a;
+            border-radius: 5px;
+        }
+        .warning {
+            background: #ff3333;
+            color: white;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+        pre {
+            background: #000;
+            color: #00ff00;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        h1, h2, h3 {
+            color: #00ff00;
+            text-shadow: 0 0 10px #00ff00;
+        }
+        .badge {
+            font-size: 0.9rem;
+            padding: 8px 12px;
+        }
+        a {
+            color: #00ccff;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #00ffff;
+            text-decoration: underline;
+        }
+        .endpoint {
+            background: #333;
+            padding: 10px;
+            margin: 5px 0;
+            border-left: 3px solid #00ff00;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="warning">
+            ⚠️ DEVELOPMENT ENVIRONMENT - NOT FOR PRODUCTION USE ⚠️
+        </div>
+
+        <h1>
+            🔧 TechCorp Development Server
+        </h1>
+
+        <p class="lead">
+            <span class="badge bg-danger">DEBUG MODE: ENABLED</span>
+            <span class="badge bg-warning text-dark">ENV: DEVELOPMENT</span>
+            <span class="badge bg-info">FLASK 3.0.0</span>
+        </p>
+
+        <!-- FLAG Display -->
+        <div class="flag">
+            🚩 FLAG CAPTURED!<br>
+            <code>{{ flag }}</code>
+        </div>
+
+        <!-- Success Message -->
+        <div class="alert alert-success">
+            <h4>✅ Congratulations!</h4>
+            <p>You successfully discovered and accessed the development subdomain. This demonstrates the risk of exposing development environments to the internet.</p>
+        </div>
+
+        <!-- Debug Information -->
+        <div class="debug-info">
+            <h3>🐛 Debug Information (Exposed)</h3>
+            <pre>{{ debug_info | tojson(indent=2) }}</pre>
+        </div>
+
+        <!-- Available Endpoints -->
+        <div class="debug-info">
+            <h3>📡 Available Debug Endpoints</h3>
+            <div class="endpoint">
+                <strong>GET /debug</strong> - Full debug information including routes and config
+            </div>
+            <div class="endpoint">
+                <strong>GET /config</strong> - Application configuration (SECRET_KEY exposed!)
+            </div>
+            <div class="endpoint">
+                <strong>GET /api/status</strong> - Development API status
+            </div>
+        </div>
+
+        <!-- Security Issues -->
+        <div class="debug-info">
+            <h3>🔓 Security Issues Found</h3>
+            <ul>
+                <li>✗ Debug mode is enabled (Flask DEBUG=True)</li>
+                <li>✗ Secret key exposed in configuration</li>
+                <li>✗ Development environment accessible without VPN</li>
+                <li>✗ Detailed error messages reveal internal structure</li>
+                <li>✗ HTTP headers expose environment information</li>
+                <li>✗ No authentication required</li>
+                <li>✗ Full configuration accessible at /config endpoint</li>
+            </ul>
+        </div>
+
+        <!-- Next Steps -->
+        <div class="debug-info">
+            <h3>🎯 Next Steps</h3>
+            <p>Continue your enumeration:</p>
+            <ul>
+                <li>🔍 Try <code>staging.techcorp.local</code> - Staging environment might have phpinfo() or similar debug pages</li>
+                <li>🔐 Try <code>admin.techcorp.local</code> - Admin portal (may require authentication)</li>
+                <li>📊 Check the /config endpoint for more information</li>
+                <li>🌐 Enumerate other potential subdomains</li>
+            </ul>
+        </div>
+
+        <!-- Links -->
+        <div class="mt-4">
+            <h3>🔗 Quick Links</h3>
+            <p>
+                <a href="/debug" class="btn btn-outline-success me-2">View Full Debug Info</a>
+                <a href="/config" class="btn btn-outline-warning me-2">View Configuration</a>
+                <a href="/api/status" class="btn btn-outline-info">API Status</a>
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-5 text-center" style="color: #666;">
+            <p>TechCorp Development Server v2.1.4-dev</p>
+            <p>Internal Use Only | Developer: john.dev@techcorp.local</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        console.log('🔍 TechCorp Development Environment');
+        console.log('FLAG: {{ flag }}');
+        console.log('Debug Mode: Enabled');
+        console.log('Hint: Try /debug and /config endpoints');
+    </script>
+</body>
+</html>
